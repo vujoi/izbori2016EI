@@ -1,0 +1,45 @@
+#testDIFFbayes
+
+#package and data
+
+library(eiPack)
+djb<-read.table("D:\\djb.csv",header=TRUE,sep=",")
+
+#check data 
+
+str(djb)
+summary(djb)
+
+ei.reg(cbind(rsns, rostali, rnisuglasali) ~ cbind(lsns, lostali, lnisuglasali), data = djb)
+
+
+#get summary 
+
+ei.out <- ei.reg(formula = cbind(rsns, rostali, rnisuglasali) ~ cbind(lsns, lostali, lnisuglasali), data = djb)
+summary(ei.out)
+
+#BAYES for local elections variable
+
+djb<-read.table("D:\\djb.csv",header=TRUE,sep=",")
+
+tuneMD(cbind(lsns, lostali, lnisuglasali) ~ cbind(rsns, rostali, rnisuglasali), covariate=NULL, data=djb, ntunes = 10, totaldraws = 1000)
+
+tune.nocov<-tuneMD(cbind(lsns, lostali, lnisuglasali) ~ cbind(rsns, rostali, rnisuglasali), covariate=NULL, data=djb, ntunes = 10, totaldraws = 1000)
+
+ei.MD.bayes(cbind(lsns, lostali, lnisuglasali) ~ cbind(rsns, rostali, rnisuglasali), data=djb, covariate=NULL, tune.list = tune.nocov, sample = 1000, thin = 1000, burnin = 50000)
+
+out.nocov<-ei.MD.bayes(cbind(lsns, lostali, lnisuglasali) ~ cbind(rsns, rostali, rnisuglasali), data=djb, covariate=NULL, tune.list = tune.nocov, sample = 1000, thin = 1000, burnin = 50000)
+
+summary(out.nocov)
+
+#LAMBDAS
+
+lmd<-lambda.MD(out.nocov, columns = c("lsns", "lostali", "lnisuglasali"))
+
+summary(lmd)
+
+density.plot(lmd)
+
+#PLOT
+
+cover.plot(out.nocov, row = "rsns", column = "lostali", ylim = c(0,0.8), pch=18)
