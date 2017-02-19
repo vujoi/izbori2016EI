@@ -1,0 +1,257 @@
+#ANOVA TEST
+
+#load packages
+library(car)
+library(userfriendlyscience)
+library(ggplot2)
+
+#load data
+anovadata <- read.table("D://anovadata.csv",header=T,sep=",",quote="")
+
+#check data
+anovadata
+
+#######################LOKALNI#######################
+
+##########SNSlok
+
+#plot data (not a test yet)
+
+ggplot(anovadata, aes(x=kand.sns, y=lok.sns, fill=kand.sns)) + geom_boxplot()
+
+#fit model
+model.glm <- glm(formula=lok.sns ~ kand.sns,family=gaussian(),data=anovadata,na.action=na.omit)
+
+#run anova, get summary
+Anova(model.glm,type='II',test.statistic='F')
+
+summary(model.glm,correlation=TRUE)
+
+#post-hoc test for unequal sample size
+one.way <- oneway(anovadata$kand.sns, y = anovadata$lok.sns, posthoc = 'games-howell')
+one.way
+
+##########DSlok
+
+#plot data (not a test yet)
+
+ggplot(anovadata, aes(x=kand.ds, y=lok.ds, fill=kand.ds)) + geom_boxplot()
+
+#fit model
+model.glm <- glm(formula=lok.ds ~ kand.ds,family=gaussian(),data=anovadata,na.action=na.omit)
+
+#run anova, get summary
+Anova(model.glm,type='II',test.statistic='F')
+
+summary(model.glm,correlation=TRUE)
+
+#post-hoc test for unequal sample size
+one.way <- oneway(anovadata$kand.ds, y = anovadata$lok.ds, posthoc = 'games-howell')
+one.way
+
+##########SPSlok
+
+#plot data (not a test yet)
+
+ggplot(anovadata, aes(x=kand.sps, y=lok.sps, fill=kand.sps)) + geom_boxplot()
+
+#fit model
+model.glm <- glm(formula=lok.sps ~ kand.sps,family=gaussian(),data=anovadata,na.action=na.omit)
+
+#run anova, get summary
+Anova(model.glm,type='II',test.statistic='F')
+
+summary(model.glm,correlation=TRUE)
+
+#post-hoc test for unequal sample size
+one.way <- oneway(anovadata$kand.sps, y = anovadata$lok.sps, posthoc = 'games-howell')
+one.way
+
+##########SRSlok
+
+#plot data (not a test yet)
+
+ggplot(anovadata, aes(x=kand.srs, y=lok.srs, fill=kand.srs)) + geom_boxplot()
+
+#fit model
+model.glm <- glm(formula=lok.srs ~ kand.srs,family=gaussian(),data=anovadata,na.action=na.omit)
+
+#run anova, get summary
+Anova(model.glm,type='II',test.statistic='F')
+
+summary(model.glm,correlation=TRUE)
+
+#post-hoc test for unequal sample size
+one.way <- oneway(anovadata$kand.srs, y = anovadata$lok.srs, posthoc = 'games-howell')
+one.way
+
+##########SDSlok
+
+#plot data (not a test yet)
+
+ggplot(anovadata, aes(x=kand.sds, y=lok.sds, fill=kand.sds)) + geom_boxplot()
+
+#fit model
+model.glm <- glm(formula=lok.sds ~ kand.sds,family=gaussian(),data=anovadata,na.action=na.omit)
+
+#run anova, get summary
+Anova(model.glm,type='II',test.statistic='F')
+
+summary(model.glm,correlation=TRUE)
+
+#post-hoc test for unequal sample size
+one.way <- oneway(anovadata$kand.sds, y = anovadata$lok.sds, posthoc = 'games-howell')
+one.way
+
+##########DSSlok
+
+#plot data (not a test yet)
+
+ggplot(anovadata, aes(x=kand.dss, y=lok.dss, fill=kand.dss)) + geom_boxplot()
+
+#fit model
+model.glm <- glm(formula=lok.dss ~ kand.dss,family=gaussian(),data=anovadata,na.action=na.omit)
+
+#run anova, get summary
+Anova(model.glm,type='II',test.statistic='F')
+
+summary(model.glm,correlation=TRUE)
+
+#post-hoc test for unequal sample size
+one.way <- oneway(anovadata$kand.dss, y = anovadata$lok.dss, posthoc = 'games-howell')
+one.way
+
+##########BSJlok
+
+#plot data (not a test yet)
+
+ggplot(anovadata, aes(x=kand.bsj, y=lok.bsj, fill=kand.bsj)) + geom_boxplot()
+
+#fit model
+model.glm <- glm(formula=lok.bsj ~ kand.bsj,family=gaussian(),data=anovadata,na.action=na.omit)
+
+#run anova, get summary
+Anova(model.glm,type='II',test.statistic='F')
+
+summary(model.glm,correlation=TRUE)
+
+#post-hoc test for unequal sample size
+one.way <- oneway(anovadata$kand.bsj, y = anovadata$lok.bsj, posthoc = 'games-howell')
+one.way
+
+#######################PARLAMENT#######################
+
+##########SNSrep
+
+#plot data (not a test yet)
+
+ggplot(anovadata, aes(x=kand.sns, y=glas.sns, fill=kand.sns)) + geom_boxplot()
+
+#fit model
+model.glm <- glm(formula=glas.sns ~ kand.sns,family=gaussian(),data=anovadata,na.action=na.omit)
+
+#run anova, get summary
+Anova(model.glm,type='II',test.statistic='F')
+
+summary(model.glm,correlation=TRUE)
+
+#post-hoc test for unequal sample size
+one.way <- oneway(anovadata$kand.sns, y = anovadata$glas.sns, posthoc = 'games-howell')
+one.way
+
+
+##########DSrep
+
+#plot data (not a test yet)
+
+ggplot(anovadata, aes(x=kand.ds, y=glas.ds, fill=kand.ds)) + geom_boxplot()
+
+#fit model
+model.glm <- glm(formula=glas.ds ~ kand.ds,family=gaussian(),data=anovadata,na.action=na.omit)
+
+#run anova, get summary
+Anova(model.glm,type='II',test.statistic='F')
+
+summary(model.glm,correlation=TRUE)
+
+#post-hoc test for unequal sample size
+one.way <- oneway(anovadata$kand.ds, y = anovadata$glas.ds, posthoc = 'games-howell')
+one.way
+
+##########SPSrep
+
+#plot data (not a test yet)
+
+ggplot(anovadata, aes(x=kand.sps, y=glas.sps, fill=kand.sps)) + geom_boxplot()
+
+#fit model
+model.glm <- glm(formula=glas.sps ~ kand.sps,family=gaussian(),data=anovadata,na.action=na.omit)
+
+#run anova, get summary
+Anova(model.glm,type='II',test.statistic='F')
+
+summary(model.glm,correlation=TRUE)
+
+#post-hoc test for unequal sample size
+one.way <- oneway(anovadata$kand.sps, y = anovadata$glas.sps, posthoc = 'games-howell')
+one.way
+
+
+##########SRSrep
+
+#plot data (not a test yet)
+
+ggplot(anovadata, aes(x=kand.srs, y=glas.srs, fill=kand.srs)) + geom_boxplot()
+
+#fit model
+model.glm <- glm(formula=glas.srs ~ kand.srs,family=gaussian(),data=anovadata,na.action=na.omit)
+
+#run anova, get summary
+Anova(model.glm,type='II',test.statistic='F')
+
+summary(model.glm,correlation=TRUE)
+
+#post-hoc test for unequal sample size
+one.way <- oneway(anovadata$kand.srs, y = anovadata$glas.srs, posthoc = 'games-howell')
+one.way
+
+
+##########SDSrep
+
+#plot data (not a test yet)
+
+ggplot(anovadata, aes(x=kand.sds, y=glas.sds, fill=kand.sds)) + geom_boxplot()
+
+#fit model
+model.glm <- glm(formula=glas.sds ~ kand.sds,family=gaussian(),data=anovadata,na.action=na.omit)
+
+#run anova, get summary
+Anova(model.glm,type='II',test.statistic='F')
+
+summary(model.glm,correlation=TRUE)
+
+#post-hoc test for unequal sample size
+one.way <- oneway(anovadata$kand.sds, y = anovadata$glas.sds, posthoc = 'games-howell')
+one.way
+
+
+##########DSSrep
+
+#plot data (not a test yet)
+
+ggplot(anovadata, aes(x=kand.dss, y=glas.dss, fill=kand.dss)) + geom_boxplot()
+
+#fit model
+model.glm <- glm(formula=glas.dss ~ kand.dss,family=gaussian(),data=anovadata,na.action=na.omit)
+
+#run anova, get summary
+Anova(model.glm,type='II',test.statistic='F')
+
+summary(model.glm,correlation=TRUE)
+
+#post-hoc test for unequal sample size
+one.way <- oneway(anovadata$kand.dss, y = anovadata$glas.dss, posthoc = 'games-howell')
+one.way
+
+
+

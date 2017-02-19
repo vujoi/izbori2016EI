@@ -1,0 +1,26 @@
+METODOLOŠKO OBJAŠNJENJE
+
+Videti:
+
+CARscript.txt
+anovadata.csv
+
+http://pescanik.net/dva-puta-nista-krade-nije-bilo/
+
+
+#PODACI
+
+Izvor podataka u anovadata.csv su zvanicni podaci o adresama stanovanja kandidata na izbornim listama u Mladenovcu 2016. Rezultati republickih izbora su zvanicni podaci RIK, dok su rezultati lokalnih izbora dobijeni licnim kontaktima autora. Faktorska varijabla je konstruisana kroz poklapanje adrese kandidata na listi sa teritorijom birackog mesta. U tri liste sa najvecim brojem kandidata(SNS, SPS, DS), faktor ima tri nivoa (bez kandidata, nešto kandidata (udeo do 32% ukupnog broja kandidata u burackom mestu) i više kandidata (33%-100%). Ostale cetiri liste (DSS, SRS, SDS, BSJ) imaju dva nivoa (bez kandidata i sa kandidatima iz birackog mesta). Ovakva odluka doneta je zbog malog N ove cetiri liste.
+
+http://www.mladenovac.rs/index.php/-2016/2016-03-10-12-11-52/2950-2016-03-10-12-14-24
+
+
+#ANALIZA
+
+U analizi je korišceno više r paketa. Za analizu varijanse (Tip II) korišcena je funkcija Anova iz paketa car (Companion to Applied Regression) J. Foxa. Isprobane su druge funkcije (aov) i više razlicitih kategorizacija podataka, i ni u jednoj kombinaciji nije bilo suštinski drugacijih rezultata za svrhu ove analize. Na osnovu F statistike i p vrednosti u cetiri slucaja nije bilo moguce odbaciti nultu hipotezu da izmedu tipova birackih mesta postoji znacajna razlika. U ostalih 9 slucajeva gde je sa razlicitim nivoima statisticke znacajnosti bilo moguce odbaciti nultu hipotezu, nastavilo se sa odredivanjem razlike u varijansi putem post-hoc testova. Za post-hoc test izabran je Games-Howell metod (posthocTGH) u paketu userfriendlyscience. Za razliku od Tukey i drugih najcešce korišcenih parametrijskih post-hoc testova, Games-Howell je prilagoden uslovima u kojima velicine uzoraka nisu jednake, kao što je slucaj sa podacima u anovadata.csv. U tabeli u tekstu su prikazane razlike izmedu visokih i niskih vrednosti najviše udaljenih nivoa faktora. 
+
+https://cran.r-project.org/web/packages/car/car.pdf
+https://cran.r-project.org/web/packages/userfriendlyscience/userfriendlyscience.pdf
+
+
+
